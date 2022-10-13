@@ -55,6 +55,16 @@ int push(Stack* stack, int data)
   return 0;
 }
 
+//返回栈顶元素，flag = 1表示栈为空，= 0表示正常
+int stackTop(Stack* stack, int* flag)
+{
+  if(stack->size == 0) {
+    *flag = 1;
+    return 0;
+  }
+  return stack->top->data;
+}
+
 void deleteStack(Stack* stack)
 {
   Node* temp;
@@ -80,6 +90,7 @@ void printStack(Stack* stack)
 int main(int argc, char const *argv[])
 {
   Stack* stack;
+  int temp, flag;
 
   stack = initStack();
   push(stack, 1);
@@ -89,6 +100,8 @@ int main(int argc, char const *argv[])
   push(stack, 5);
   printStack(stack);
   pop(stack);
+  temp = stackTop(stack, &flag);
+  printf("head of the queue is %d\n", temp);
   printStack(stack);
   pop(stack);
   pop(stack);
