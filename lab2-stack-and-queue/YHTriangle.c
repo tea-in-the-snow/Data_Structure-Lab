@@ -9,8 +9,8 @@ typedef struct queue
 {
   int front;
   int tail;
-  int* q;
-}Queue;
+  int *q;
+} Queue;
 
 int nextPos(int x)
 {
@@ -19,9 +19,9 @@ int nextPos(int x)
 
 //初始化队列
 //注：front指向队头元素，tail指向队尾元素下一个元素
-Queue* initQueue()
+Queue *initQueue()
 {
-  Queue* queue;
+  Queue *queue;
 
   printf("initialize queue\n");
   queue = malloc(sizeof(Queue));
@@ -31,7 +31,7 @@ Queue* initQueue()
   return queue;
 }
 
-void deleteQueue(Queue* queue)
+void deleteQueue(Queue *queue)
 {
   free(queue->q);
   free(queue);
@@ -45,19 +45,20 @@ void deleteQueue(Queue* queue)
 // }
 
 //出队
-int pop(Queue* queue)
+int pop(Queue *queue)
 {
-  //printf("queue pop\n");
-  if(queue->front == queue->tail)
+  // printf("queue pop\n");
+  if (queue->front == queue->tail)
     return 1;
   queue->front = nextPos(queue->front);
 }
 
 //入队
-int push(Queue* queue, int data)
+int push(Queue *queue, int data)
 {
-  //printf("queue push %d\n", data);
-  if(queue->front == nextPos(queue->tail)) {
+  // printf("queue push %d\n", data);
+  if (queue->front == nextPos(queue->tail))
+  {
     return 1;
   }
   *(queue->q + queue->tail) = data;
@@ -66,9 +67,10 @@ int push(Queue* queue, int data)
 }
 
 //返回队头元素,flag = 1表示队列为空，= 0表示正常
-int queueFront(Queue* queue, int* flag)
+int queueFront(Queue *queue, int *flag)
 {
-  if(queue->front == queue->tail) {
+  if (queue->front == queue->tail)
+  {
     *flag = 1;
     return 0;
   }
@@ -77,14 +79,15 @@ int queueFront(Queue* queue, int* flag)
 }
 
 //打印队列中的元素
-void printQueue(Queue* queue)
+void printQueue(Queue *queue)
 {
   int temp;
 
-  if(queue->front == queue->tail)
+  if (queue->front == queue->tail)
     printf("queue is empty\n");
   temp = queue->front;
-  while(temp != queue->tail) {
+  while (temp != queue->tail)
+  {
     printf("%d ", *(queue->q + temp));
     temp = nextPos(temp);
   }
@@ -93,7 +96,7 @@ void printQueue(Queue* queue)
 
 void printYHTriangle(int level)
 {
-  Queue* queue;
+  Queue *queue;
   int presentLevel, temp, front, flag, next;
 
   //初始化操作
@@ -103,33 +106,37 @@ void printYHTriangle(int level)
   //第一层入队，-1，0分别指示层头层尾
   push(queue, -1);
   push(queue, 1);
-  //push(queue, 0);
+  // push(queue, 0);
   temp = 0;
   //打印
-  while(presentLevel <= level) {
+  while (presentLevel <= level)
+  {
     front = queueFront(queue, &flag);
 
     // printf("###");
     // printQueue(queue);
     // printf("temp=%d front=%d\n", temp, front);
 
-    if(flag)
+    if (flag)
       break;
     pop(queue);
     next = temp + front;
-    if(front == -1) {
+    if (front == -1)
+    {
       temp = 0;
       presentLevel++;
       push(queue, 0);
     }
-    else if (front == 0) {
+    else if (front == 0)
+    {
       printf("\n");
     }
-    if(front > 0) {
+    if (front > 0)
+    {
       printf("%d ", front);
     }
     temp = front;
-    if(temp == -1)
+    if (temp == -1)
       temp = 0;
     push(queue, next);
   }
@@ -140,17 +147,20 @@ int main(int argc, char const *argv[])
 {
   int level;
 
-  if(argc != 2) {
+  if (argc != 2)
+  {
     printf("Usage: YHTriangle <level>\n");
     return 1;
   }
 
   level = atoi(argv[1]);
-  if(level <= 0) {
+  if (level <= 0)
+  {
     printf("illeagl argumunt\n");
     return 1;
   }
-  if(level > MAX_LEVEL) {
+  if (level > MAX_LEVEL)
+  {
     printf("level can not be greater than %d\n", MAX_LEVEL);
     return 1;
   }
