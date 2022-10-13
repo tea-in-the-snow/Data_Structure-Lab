@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef int stackData;
+
 typedef struct node
 {
-  int data;
+  stackData data;
   struct node* next;
 }Node;
 
@@ -40,7 +42,7 @@ int pop(Stack* stack)
 }
 
 //入栈，成功返回0，失败返回1
-int push(Stack* stack, int data)
+int push(Stack* stack, stackData data)
 {
   Node* temp;
 
