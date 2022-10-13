@@ -64,6 +64,7 @@ int stackTop(Stack *stack, int *flag)
     *flag = 1;
     return 0;
   }
+  *flag = 0;
   return stack->top->data;
 }
 
