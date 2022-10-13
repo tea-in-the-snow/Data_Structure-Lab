@@ -7,8 +7,8 @@ typedef struct queue
 {
   int front;
   int tail;
-  int* q;
-}Queue;
+  int *q;
+} Queue;
 
 int nextPos(int x)
 {
@@ -17,9 +17,9 @@ int nextPos(int x)
 
 //初始化队列
 //注：front指向队头元素，tail指向队尾元素下一个元素
-Queue* initQueue()
+Queue *initQueue()
 {
-  Queue* queue;
+  Queue *queue;
 
   printf("initialize queue\n");
   queue = malloc(sizeof(Queue));
@@ -29,20 +29,27 @@ Queue* initQueue()
   return queue;
 }
 
+void deleteQueue(Queue *queue)
+{
+  free(queue->q);
+  free(queue);
+}
+
 //出队
-int pop(Queue* queue)
+int pop(Queue *queue)
 {
   printf("queue pop\n");
-  if(queue->front == queue->tail)
+  if (queue->front == queue->tail)
     return 1;
   queue->front = nextPos(queue->front);
 }
 
 //入队
-int push(Queue* queue, int data)
+int push(Queue *queue, int data)
 {
   printf("queue push %d\n", data);
-  if(queue->front == nextPos(queue->tail)) {
+  if (queue->front == nextPos(queue->tail))
+  {
     return 1;
   }
   *(queue->q + queue->tail) = data;
@@ -51,9 +58,10 @@ int push(Queue* queue, int data)
 }
 
 //返回队头元素,flag = 1表示队列为空，= 0表示正常
-int queueFront(Queue* queue, int* flag)
+int queueFront(Queue *queue, int *flag)
 {
-  if(queue->front == queue->tail) {
+  if (queue->front == queue->tail)
+  {
     *flag = 1;
     return 0;
   }
@@ -62,14 +70,15 @@ int queueFront(Queue* queue, int* flag)
 }
 
 //打印队列中的元素
-void printQueue(Queue* queue)
+void printQueue(Queue *queue)
 {
   int temp;
 
-  if(queue->front == queue->tail)
+  if (queue->front == queue->tail)
     printf("queue is empty\n");
   temp = queue->front;
-  while(temp != queue->tail) {
+  while (temp != queue->tail)
+  {
     printf("%d ", *(queue->q + temp));
     temp = nextPos(temp);
   }
@@ -78,7 +87,7 @@ void printQueue(Queue* queue)
 
 int main(int argc, char const *argv[])
 {
-  Queue* queue;
+  Queue *queue;
   int flag, temp;
 
   queue = initQueue();
@@ -101,4 +110,3 @@ int main(int argc, char const *argv[])
 
   return 0;
 }
-

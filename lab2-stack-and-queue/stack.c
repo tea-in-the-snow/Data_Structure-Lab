@@ -6,18 +6,18 @@ typedef int stackData;
 typedef struct node
 {
   stackData data;
-  struct node* next;
+  struct node *next;
 }Node;
 
 typedef struct stack
 {
-  Node* top;
+  Node *top;
   int size;
 }Stack;
 
-Stack* initStack()
+Stack *initStack()
 {
-  Stack* newStack;
+  Stack *newStack;
 
   printf("initialize stack\n");
   newStack = malloc(sizeof(Stack));
@@ -27,9 +27,9 @@ Stack* initStack()
 }
 
 //出栈，成功返回0，空栈返回1
-int pop(Stack* stack)
+int pop(Stack *stack)
 {
-  Node* temp;
+  Node *temp;
 
   printf("stask pop\n");
   if(stack->size == 0)
@@ -42,9 +42,9 @@ int pop(Stack* stack)
 }
 
 //入栈，成功返回0，失败返回1
-int push(Stack* stack, stackData data)
+int push(Stack *stack, stackData data)
 {
-  Node* temp;
+  Node *temp;
 
   printf("stack push %d\n", data);
   temp = malloc(sizeof(Node));
@@ -58,7 +58,7 @@ int push(Stack* stack, stackData data)
 }
 
 //返回栈顶元素，flag = 1表示栈为空，= 0表示正常
-int stackTop(Stack* stack, int* flag)
+int stackTop(Stack *stack, int *flag)
 {
   if(stack->size == 0) {
     *flag = 1;
@@ -67,9 +67,9 @@ int stackTop(Stack* stack, int* flag)
   return stack->top->data;
 }
 
-void deleteStack(Stack* stack)
+void deleteStack(Stack *stack)
 {
-  Node* temp;
+  Node *temp;
 
   while(!pop(stack))
     ;
@@ -77,9 +77,9 @@ void deleteStack(Stack* stack)
   printf("stack deleted\n");
 }
 
-void printStack(Stack* stack)
+void printStack(Stack *stack)
 {
-  Node* temp;
+  Node *temp;
 
   temp = stack->top;
   while(temp != NULL) {
@@ -91,7 +91,7 @@ void printStack(Stack* stack)
 
 int main(int argc, char const *argv[])
 {
-  Stack* stack;
+  Stack *stack;
   int temp, flag;
 
   stack = initStack();
