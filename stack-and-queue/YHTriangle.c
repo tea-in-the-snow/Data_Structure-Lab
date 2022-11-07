@@ -112,11 +112,6 @@ void printYHTriangle(int level)
   while (presentLevel <= level)
   {
     front = queueFront(queue, &flag);
-
-    // printf("###");
-    // printQueue(queue);
-    // printf("temp=%d front=%d\n", temp, front);
-
     if (flag)
       break;
     pop(queue);

@@ -104,6 +104,7 @@ int priority(char x)
   return 0;
 }
 
+//将前缀表达式exp转换为后缀表达式str
 int change(const char *exp, char *str)
 {
   Stack *signalSt;  //符号栈，用于转换为后缀表达式
@@ -178,6 +179,7 @@ int change(const char *exp, char *str)
   return 0;
 }
 
+//计算后缀表达式
 int calculate(char *str)
 {
   Stack *st;
