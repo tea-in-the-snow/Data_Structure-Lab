@@ -1,4 +1,4 @@
-# <center>实验2：栈和队列</center>
+# <center>实验：栈和队列</center>
 
 ### 1. 实现无表头节点的链栈MyStack
 -	栈初始化
