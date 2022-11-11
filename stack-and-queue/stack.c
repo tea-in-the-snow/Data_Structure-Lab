@@ -1,19 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef int stackData;
-
-typedef struct node
-{
-  stackData data;
-  struct node *next;
-}Node;
-
-typedef struct stack
-{
-  Node *top;
-  int size;
-}Stack;
+#include "stack.h"
 
 Stack *initStack()
 {
@@ -27,7 +14,7 @@ Stack *initStack()
 }
 
 //出栈，成功返回0，空栈返回1
-int pop(Stack *stack)
+int popStack(Stack *stack)
 {
   Node *temp;
 
@@ -42,7 +29,7 @@ int pop(Stack *stack)
 }
 
 //入栈，成功返回0，失败返回1
-int push(Stack *stack, stackData data)
+int pushStack(Stack *stack, stackData data)
 {
   Node *temp;
 
@@ -72,7 +59,7 @@ void deleteStack(Stack *stack)
 {
   Node *temp;
 
-  while(!pop(stack))
+  while(!popStack(stack))
     ;
   free(stack);
   printf("stack deleted\n");
@@ -88,28 +75,5 @@ void printStack(Stack *stack)
     temp = temp->next;
   }
   printf("\n");
-}
-
-int main(int argc, char const *argv[])
-{
-  Stack *stack;
-  int temp, flag;
-
-  stack = initStack();
-  push(stack, 1);
-  push(stack, 2);
-  push(stack, 3);
-  push(stack, 4);
-  push(stack, 5);
-  printStack(stack);
-  pop(stack);
-  temp = stackTop(stack, &flag);
-  printf("head of the queue is %d\n", temp);
-  printStack(stack);
-  pop(stack);
-  pop(stack);
-  printStack(stack);
-  
-  return 0;
 }
 

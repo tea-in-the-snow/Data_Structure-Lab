@@ -1,14 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-#define MAX_QUEUE_SIZE 100
-
-typedef struct queue
-{
-  int front;
-  int tail;
-  int *q;
-} Queue;
+#include "queue.h"
 
 int nextPos(int x)
 {
@@ -36,7 +28,7 @@ void deleteQueue(Queue *queue)
 }
 
 //出队
-int pop(Queue *queue)
+int popQueue(Queue *queue)
 {
   printf("queue pop\n");
   if (queue->front == queue->tail)
@@ -45,7 +37,7 @@ int pop(Queue *queue)
 }
 
 //入队
-int push(Queue *queue, int data)
+int pushQueue(Queue *queue, int data)
 {
   printf("queue push %d\n", data);
   if (queue->front == nextPos(queue->tail))
@@ -83,30 +75,4 @@ void printQueue(Queue *queue)
     temp = nextPos(temp);
   }
   printf("\n");
-}
-
-int main(int argc, char const *argv[])
-{
-  Queue *queue;
-  int flag, temp;
-
-  queue = initQueue();
-  push(queue, 1);
-  push(queue, 2);
-  push(queue, 3);
-  push(queue, 4);
-  temp = queueFront(queue, &flag);
-  printf("head of the queue is %d\n", temp);
-  printQueue(queue);
-  pop(queue);
-  printQueue(queue);
-  push(queue, 6);
-  push(queue, 7);
-  printQueue(queue);
-  pop(queue);
-  pop(queue);
-  pop(queue);
-  printQueue(queue);
-
-  return 0;
 }
