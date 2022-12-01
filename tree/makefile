@@ -1,5 +1,5 @@
 test : test.o initTree.o printTree.o opsonTree.o huffmanTree.o stack.o queue.o
-	gcc -o test test.o initTree.o printTree.o opsonTree.o huffmanTree.o stack.o queue.o
+	gcc $^ -o $@
 
 test.o : test.c binaryTree.h
 	gcc -c test.c
