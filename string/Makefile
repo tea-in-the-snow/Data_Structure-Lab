@@ -9,4 +9,4 @@ myMatrix.o : myMatrix.c
 	gcc -c myMatrix.c
 
 clean :
-	rm test test.o myString.o
+	rm test test.o myString.o myMatrix.o
