@@ -1,6 +1,11 @@
+#ifndef __SOMEFILE_H__
+#define __SOMEFILE_H__
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "graph.h"
+
+#endif
 
 // 新建一个只有顶点，没有边的图
 Graph *initGraph(int vertexNum, ElementType *v)
@@ -41,7 +46,6 @@ int addEdge(Graph *graph, int src, int dest, int cost)
 // 在图中添加无向边
 int addUndirEdge(Graph *graph, int src, int dest, int cost)
 {
-  printf("Adding undirected edge between %c and %c\n", graph->vertex[src].val, graph->vertex[dest].val);
   return addEdge(graph, src, dest, cost) || addEdge(graph, dest, src, cost);
 }
 

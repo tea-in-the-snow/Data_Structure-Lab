@@ -1,6 +1,11 @@
+#ifndef __SOMEFILE_H__
+#define __SOMEFILE_H__
+
 #include <stdio.h>
 #include "graph.h"
-#include "connected.h"
+#include "solutions.h"
+
+#endif
 
 int main(int argc, char const *argv[])
 {
@@ -24,6 +29,20 @@ int main(int argc, char const *argv[])
   addUndirEdge(graph, 12, 14, 1); // MO
   
   printConnected(graph);
+  char v2[] = "123456789";
+  Graph *graph2 = initGraph(9, v2);
+  addEdge(graph2, 0, 1, 6);
+  addEdge(graph2, 0, 2, 4);
+  addEdge(graph2, 0, 3, 5);
+  addEdge(graph2, 1, 4, 1);
+  addEdge(graph2, 2, 4, 1);
+  addEdge(graph2, 3, 5, 2);
+  addEdge(graph2, 4, 6, 9);
+  addEdge(graph2, 4, 7, 7);
+  addEdge(graph2, 5, 7, 4);
+  addEdge(graph2, 6, 8, 2);
+  addEdge(graph2, 7, 8, 3);
+  printCriticalPath(graph2);
 
   return 0;
 }

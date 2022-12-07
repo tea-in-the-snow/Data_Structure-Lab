@@ -1,1 +1,0 @@
-void printConnected(Graph *graph);

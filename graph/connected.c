@@ -1,8 +1,13 @@
+#ifndef __SOMEFILE_H__
+#define __SOMEFILE_H__
+
 #include <stdio.h>
 #include <string.h>
 #include "graph.h"
 #include "queue.h"
 #include "stack.h"
+
+#endif
 
 void dfs(Graph *graph, int *visited, int start)
 {

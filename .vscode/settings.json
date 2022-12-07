@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "mymatrix.h": "c",
+    "graph.h": "c",
+    "stack.h": "c",
+    "stdlib.h": "c"
+  }
+}
